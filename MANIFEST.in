@@ -1,0 +1,11 @@
+include dash_deckgl/dash_deckgl.min.js
+include dash_deckgl/dash_deckgl.min.js.map
+include dash_deckgl/async-*.js
+include dash_deckgl/async-*.js.map
+include dash_deckgl/*-shared.js
+include dash_deckgl/*-shared.js.map
+include dash_deckgl/metadata.json
+include dash_deckgl/package-info.json
+include README.md
+include LICENSE
+include package.json
