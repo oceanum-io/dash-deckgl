@@ -1,5 +1,5 @@
 
-import urllib.request
+import os
 import pydeck as pdk
 import xarray as xr
 import dash_deckgl
@@ -8,8 +8,7 @@ from dash import Dash, callback, html, Input, Output
 #Note that this import also adds the necessary custom layers to pydeck.settings.custom_libraries
 from pydeck_grid import PcolorLayer, PartmeshLayer
 
-urllib.request.urlretrieve("https://github.com/oceanum-io/dash-deckgl/raw/main/tests/data/gfs_nz.nc","test.nc")
-grid_data = xr.open_dataset("test.nc")
+grid_data = xr.open_dataset(os.path.join(os.path.dirname(__file__), "tests","data","gfs_nz.nc"))
 datakeys = {
     "x": "longitude",
     "y": "latitude",
