@@ -4,9 +4,9 @@ const path = require('path');
 config.entry = {main: './src/demo/index.js'};
 config.output = {
     filename: './output.js',
-    path: path.resolve(__dirname),
 };
 config.mode = 'development';
 config.externals = undefined; // eslint-disable-line
-config.devtool = 'inline-source-map';
+config.devtool = 'source-map';
+
 module.exports = config;

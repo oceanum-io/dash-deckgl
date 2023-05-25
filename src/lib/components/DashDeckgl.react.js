@@ -1,19 +1,18 @@
 import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {Deckgl} from '../LazyLoader';
+const Deckgl = React.lazy(() =>
+    import(/* webpackChunkName: "deckgl" */ './Deckgl.jsx')
+);
 
 /**
- * ExampleComponent is an example component.
- * It takes a property, `label`, and
- * displays it.
- * It renders an input with the property `value`
- * which is editable by the user.
+ * DashDeckGL is a wrapper of deck.gl for Dash.
+ * It takes a deck.gl JSON spec, converts it to a React component in aplotly dash app,
  */
 
 const DashDeckgl = (props) => {
     return (
-        <React.Suspense fallback={null}>
-            <Deckgl {...this.props} />
+        <React.Suspense fallback={<div>Loading map...</div>}>
+            <Deckgl {...props} />
         </React.Suspense>
     );
 };
@@ -31,12 +30,31 @@ DashDeckgl.propTypes = {
      */
     spec: PropTypes.string.isRequired,
 
+    /**
+     * A tooltip object that follows he pydeck tooltip specifcation.
+     */
     tooltip: PropTypes.object,
+    /**
+     * width of the map component container as pixels or CSS string
+     * (optional) Default 100% of parent container
+     * */
+    width: PropTypes.number,
 
+    /**
+     * Height of the map component container as pixels or CSS string
+     * (optional) Default 500
+     * */
     height: PropTypes.number,
 
+    /**
+     * Array of custom libraries to load. For example:
+     * [{libraryName: 'DeckGriddedLayers', resourceUri: 'https://assets.oceanum.io/packages/deck-gl-grid/bundle.umd.cjs'}]
+     * */
     customLibraries: PropTypes.array,
 
+    /**
+     * Addiitional configuration
+     */
     configuration: PropTypes.object,
 
     /**
@@ -45,7 +63,8 @@ DashDeckgl.propTypes = {
     description: PropTypes.object,
 
     /**
-     * List of events to listen to
+     * List of events to listen to. Can be any of:
+     * ['click','hover','drag']
      */
     events: PropTypes.array,
 
@@ -60,6 +79,11 @@ DashDeckgl.propTypes = {
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func,
+
+    /**
+     * The last event that was triggered. This is a read-only property.
+     */
+    lastEvent: PropTypes.object,
 };
 
 export const defaultProps = DashDeckgl.defaultProps;

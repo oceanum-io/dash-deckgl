@@ -1,6 +1,6 @@
 {
   "src/lib/components/DashDeckgl.react.js": {
-    "description": "ExampleComponent is an example component.\nIt takes a property, `label`, and\ndisplays it.\nIt renders an input with the property `value`\nwhich is editable by the user.",
+    "description": "DashDeckGL is a wrapper of deck.gl for Dash.\nIt takes a deck.gl JSON spec, converts it to a React component in aplotly dash app,",
     "displayName": "DashDeckgl",
     "methods": [],
     "props": {
@@ -23,28 +23,35 @@
           "name": "object"
         },
         "required": false,
-        "description": ""
+        "description": "A tooltip object that follows he pydeck tooltip specifcation."
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "width of the map component container as pixels or CSS string\n(optional) Default 100% of parent container"
       },
       "height": {
         "type": {
           "name": "number"
         },
         "required": false,
-        "description": ""
+        "description": "Height of the map component container as pixels or CSS string\n(optional) Default 500"
       },
       "customLibraries": {
         "type": {
           "name": "array"
         },
         "required": false,
-        "description": ""
+        "description": "Array of custom libraries to load. For example:\n[{libraryName: 'DeckGriddedLayers', resourceUri: 'https://assets.oceanum.io/packages/deck-gl-grid/bundle.umd.cjs'}]"
       },
       "configuration": {
         "type": {
           "name": "object"
         },
         "required": false,
-        "description": ""
+        "description": "Addiitional configuration"
       },
       "description": {
         "type": {
@@ -58,7 +65,7 @@
           "name": "array"
         },
         "required": false,
-        "description": "List of events to listen to"
+        "description": "List of events to listen to. Can be any of:\n['click','hover','drag']"
       },
       "overlay": {
         "type": {
@@ -73,6 +80,13 @@
         },
         "required": false,
         "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
+      },
+      "lastEvent": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The last event that was triggered. This is a read-only property."
       }
     }
   }

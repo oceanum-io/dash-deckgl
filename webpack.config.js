@@ -53,10 +53,19 @@ module.exports = (env, argv) => {
             chunkFilename: '[name].js',
             filename,
             library: dashLibraryName,
-            libraryTarget: 'window',
+            libraryTarget: 'global',
         },
         devtool,
         externals,
+        resolve: {
+            fallback: {
+                os: false,
+                fs: false,
+                tty: false,
+                child_process: false,
+                'process/browser': require.resolve('process/browser'),
+            },
+        },
         module: {
             rules: [
                 {
@@ -80,14 +89,27 @@ module.exports = (env, argv) => {
                         },
                     ],
                 },
+                {
+                    test: /\.js$/,
+                    enforce: 'pre',
+                    use: ['source-map-loader'],
+                },
             ],
         },
-        optimization: {},
+        optimization: {
+            minimize: mode === 'production',
+            splitChunks: {
+                name: 'vendor',
+            },
+        },
         plugins: [
             new WebpackDashDynamicImport(),
             new webpack.SourceMapDevToolPlugin({
                 filename: '[file].map',
                 exclude: ['async-plotlyjs'],
+            }),
+            new webpack.ProvidePlugin({
+                process: 'process/browser',
             }),
         ],
     };

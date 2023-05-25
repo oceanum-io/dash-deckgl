@@ -28,14 +28,14 @@ _current_path = _os.path.dirname(_os.path.abspath(__file__))
 
 _this_module = _sys.modules[__name__]
 
-async_resources = ["DashDeckgl",]
+async_resources = ["DashDeckgl","deckgl","vendor"]
 
 _js_dist = []
 
 _js_dist.extend(
     [
         {
-            "relative_package_path": "async-{}.js".format(async_resource),
+            "relative_package_path": "{}.js".format(async_resource),
             "external_url": (
                 "https://unpkg.com/{0}@{2}"
                 "/{1}/async-{3}.js"
@@ -51,7 +51,7 @@ _js_dist.extend(
 _js_dist.extend(
     [
         {
-            "relative_package_path": "async-{}.js.map".format(async_resource),
+            "relative_package_path": "{}.js.map".format(async_resource),
             "external_url": (
                 "https://unpkg.com/{0}@{2}"
                 "/{1}/async-{3}.js.map"
