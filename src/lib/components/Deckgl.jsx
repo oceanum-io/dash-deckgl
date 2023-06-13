@@ -26,7 +26,7 @@ const DeckglMap = ({
     const [configurationLoaded, setConfigurationLoaded] = useState(false);
     const jsonConverter = useConverter();
 
-    const [viewState, setViewState] = useState({});
+    const [viewState, setViewState] = useState(null);
 
     const descriptions = [];
     if (description) {
@@ -90,13 +90,15 @@ const DeckglMap = ({
 
     useEffect(() => {
         const newPrimaryProps = jsonConverter.convert(spec);
-        setViewState(newPrimaryProps.initialViewState);
-        setPrimaryProps(newPrimaryProps);
+        //console.log(newPrimaryProps);
+        if (!viewState && newPrimaryProps.initialViewState)
+            setViewState(newPrimaryProps.initialViewState);
+        setPrimaryProps({...primaryProps, ...newPrimaryProps});
     }, [spec, jsonConverter]);
 
     useEffect(() => {
         const newOverlayProps = jsonConverter.convert(overlay);
-        setOverlayProps(newOverlayProps);
+        setOverlayProps({...overlayProps, ...newOverlayProps});
     }, [overlay, jsonConverter]);
 
     const updateViewState = useCallback(({viewState}) => {
@@ -116,17 +118,19 @@ const DeckglMap = ({
                 id="deckgl-primary"
                 style={{width: '100%', height: '100%', position: 'relative'}}
             >
-                <DeckGL
-                    viewState={viewState}
-                    onViewStateChange={updateViewState}
-                    {...sharedProps}
-                    {...primaryProps}
-                >
-                    <Map
-                        mapStyle={primaryProps.mapStyle || BASEMAP.POSITRON}
-                        mapboxAccessToken={mapbox_key}
-                    />
-                </DeckGL>
+                {viewState && (
+                    <DeckGL
+                        viewState={viewState}
+                        onViewStateChange={updateViewState}
+                        {...sharedProps}
+                        {...primaryProps}
+                    >
+                        <Map
+                            mapStyle={primaryProps.mapStyle || BASEMAP.POSITRON}
+                            mapboxAccessToken={mapbox_key}
+                        />
+                    </DeckGL>
+                )}
             </div>
             {overlay && (
                 <div

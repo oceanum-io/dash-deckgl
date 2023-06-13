@@ -8,4 +8,3 @@ def test_render_component(dash_duo):
     app = import_app('usage')
     dash_duo.start_server(app)
 
-
