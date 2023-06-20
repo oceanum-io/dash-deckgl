@@ -52,10 +52,10 @@ app.layout = html.Div([
         description={"top-right": colorbar},
         height=500,
         customLibraries=pdk.settings.custom_libraries,
-        tooltip={
+        tooltips=[{
             "html": "<b>Wind speed:</b> {value} kts",
             "style": {"backgroundColor": "steelblue", "color": "white"},
-        },
+        }],
         events=['click']
     ),
     html.Div(id='output')

@@ -41,8 +41,10 @@ Keyword arguments:
 - spec (string; required):
     JSON spec of the primary deck.gl instance.
 
-- tooltip (dict; optional):
-    A tooltip object that follows he pydeck tooltip specifcation.
+- tooltips (list; optional):
+    An array of tooltip objects that follows he pydeck tooltip
+    specifcation. An additonal 'layer' property can be added to the
+    tooltip objects to restrict their action to that layer ID.
 
 - width (number; optional):
     width of the map component container as pixels or CSS string
@@ -52,10 +54,10 @@ Keyword arguments:
     _namespace = 'dash_deckgl'
     _type = 'DashDeckgl'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltip=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, lastEvent=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'overlay', 'spec', 'tooltip', 'width']
+    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, lastEvent=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'overlay', 'spec', 'tooltips', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'overlay', 'spec', 'tooltip', 'width']
+        self.available_properties = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'overlay', 'spec', 'tooltips', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

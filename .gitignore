@@ -156,6 +156,8 @@ __pycache__/
 build/
 develop-eggs/
 dist/
+deps/
+inst/
 downloads/
 eggs/
 .eggs/

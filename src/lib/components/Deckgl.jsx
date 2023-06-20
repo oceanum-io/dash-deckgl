@@ -9,7 +9,7 @@ import makeTooltip from './utils/widget-tooltip';
 
 const DeckglMap = ({
     spec,
-    tooltip,
+    tooltips,
     width = '100%',
     height = 500,
     events = [],
@@ -77,7 +77,7 @@ const DeckglMap = ({
         onDragEnd: (info) => handleEvent('drag-end', info),
     };
 
-    const getTooltip = makeTooltip(tooltip);
+    const getTooltip = makeTooltip(tooltips);
 
     const sharedProps = {
         ...handlers,

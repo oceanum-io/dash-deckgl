@@ -22,12 +22,13 @@ Keyword arguments:
 - `overlay` (String; optional): JSON spec of the overlay deck.gl instance
 (optional)
 - `spec` (String; required): JSON spec of the primary deck.gl instance
-- `tooltip` (Dict; optional): A tooltip object that follows he pydeck tooltip specifcation.
+- `tooltips` (Array; optional): An array of tooltip objects that follows he pydeck tooltip specifcation.
+An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.
 - `width` (Real; optional): width of the map component container as pixels or CSS string
 (optional) Default 100% of parent container
 """
 function dashdeckgl(; kwargs...)
-        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :lastEvent, :overlay, :spec, :tooltip, :width]
+        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :lastEvent, :overlay, :spec, :tooltips, :width]
         wild_props = Symbol[]
         return Component("dashdeckgl", "DashDeckgl", "dash_deckgl", available_props, wild_props; kwargs...)
 end

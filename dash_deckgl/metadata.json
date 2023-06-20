@@ -18,12 +18,12 @@
         "required": true,
         "description": "JSON spec of the primary deck.gl instance"
       },
-      "tooltip": {
+      "tooltips": {
         "type": {
-          "name": "object"
+          "name": "array"
         },
         "required": false,
-        "description": "A tooltip object that follows he pydeck tooltip specifcation."
+        "description": "An array of tooltip objects that follows he pydeck tooltip specifcation.\nAn additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID."
       },
       "width": {
         "type": {

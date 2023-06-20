@@ -12,7 +12,7 @@ DashDeckGL is a wrapper of deck.gl for Dash. It takes a deck.gl JSON spec, conve
 \usage{
 dashDeckgl(id=NULL, configuration=NULL, customLibraries=NULL,
 description=NULL, events=NULL, height=NULL, lastEvent=NULL,
-overlay=NULL, spec=NULL, tooltip=NULL, width=NULL)
+overlay=NULL, spec=NULL, tooltips=NULL, width=NULL)
 }
 
 \arguments{
@@ -38,7 +38,8 @@ overlay=NULL, spec=NULL, tooltip=NULL, width=NULL)
 
 \item{spec}{Character. JSON spec of the primary deck.gl instance}
 
-\item{tooltip}{Named list. A tooltip object that follows he pydeck tooltip specifcation.}
+\item{tooltips}{Unnamed list. An array of tooltip objects that follows he pydeck tooltip specifcation.
+An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.}
 
 \item{width}{Numeric. width of the map component container as pixels or CSS string
 (optional) Default 100\% of parent container}

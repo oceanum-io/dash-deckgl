@@ -31,9 +31,10 @@ DashDeckgl.propTypes = {
     spec: PropTypes.string.isRequired,
 
     /**
-     * A tooltip object that follows he pydeck tooltip specifcation.
+     * An array of tooltip objects that follows he pydeck tooltip specifcation.
+     * An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.
      */
-    tooltip: PropTypes.object,
+    tooltips: PropTypes.array,
     /**
      * width of the map component container as pixels or CSS string
      * (optional) Default 100% of parent container
