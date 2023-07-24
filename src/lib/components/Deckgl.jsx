@@ -90,8 +90,8 @@ const DeckglMap = ({
 
     useEffect(() => {
         const newPrimaryProps = jsonConverter.convert(spec);
-        //console.log(newPrimaryProps);
-        if (!viewState && newPrimaryProps.initialViewState)
+        console.log(newPrimaryProps);
+        if (newPrimaryProps.initialViewState)
             setViewState(newPrimaryProps.initialViewState);
         setPrimaryProps({...primaryProps, ...newPrimaryProps});
     }, [spec, jsonConverter]);
