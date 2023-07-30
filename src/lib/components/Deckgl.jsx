@@ -16,7 +16,6 @@ const DeckglMap = ({
     description,
     overlay,
     mapbox_key,
-    google_maps_key,
     setProps,
     lastEvent,
 }) => {
@@ -90,9 +89,15 @@ const DeckglMap = ({
 
     useEffect(() => {
         const newPrimaryProps = jsonConverter.convert(spec);
-        console.log(newPrimaryProps);
-        if (newPrimaryProps.initialViewState)
-            setViewState(newPrimaryProps.initialViewState);
+        if (newPrimaryProps.initialViewState) {
+            if (
+                !viewState ||
+                (newPrimaryProps.initialViewState.longitude &&
+                    newPrimaryProps.initialViewState.latitude)
+            ) {
+                setViewState(newPrimaryProps.initialViewState);
+            }
+        }
         setPrimaryProps({...primaryProps, ...newPrimaryProps});
     }, [spec, jsonConverter]);
 
@@ -105,9 +110,9 @@ const DeckglMap = ({
         setViewState(viewState);
     }, []);
 
-    if (google_maps_key) {
-        return <div>Google map overlays not supported</div>;
-    }
+    // if (google_maps_key) {
+    //     return <div>Google map overlays not supported</div>;
+    // }
 
     return (
         <div

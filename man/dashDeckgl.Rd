@@ -12,7 +12,8 @@ DashDeckGL is a wrapper of deck.gl for Dash. It takes a deck.gl JSON spec, conve
 \usage{
 dashDeckgl(id=NULL, configuration=NULL, customLibraries=NULL,
 description=NULL, events=NULL, height=NULL, lastEvent=NULL,
-overlay=NULL, spec=NULL, tooltips=NULL, width=NULL)
+mapbox_key=NULL, overlay=NULL, spec=NULL, tooltips=NULL,
+width=NULL)
 }
 
 \arguments{
@@ -32,6 +33,9 @@ overlay=NULL, spec=NULL, tooltips=NULL, width=NULL)
 (optional) Default 500}
 
 \item{lastEvent}{Named list. The last event that was triggered. This is a read-only property.}
+
+\item{mapbox_key}{Character. mapbox API key for mapbox basemaps
+(optional)}
 
 \item{overlay}{Character. JSON spec of the overlay deck.gl instance
 (optional)}

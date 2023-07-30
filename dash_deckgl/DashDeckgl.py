@@ -35,6 +35,9 @@ Keyword arguments:
 - lastEvent (dict; optional):
     The last event that was triggered. This is a read-only property.
 
+- mapbox_key (string; optional):
+    mapbox API key for mapbox basemaps (optional).
+
 - overlay (string; optional):
     JSON spec of the overlay deck.gl instance (optional).
 
@@ -54,10 +57,10 @@ Keyword arguments:
     _namespace = 'dash_deckgl'
     _type = 'DashDeckgl'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, lastEvent=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'overlay', 'spec', 'tooltips', 'width']
+    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, mapbox_key=Component.UNDEFINED, lastEvent=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'mapbox_key', 'overlay', 'spec', 'tooltips', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'overlay', 'spec', 'tooltips', 'width']
+        self.available_properties = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'mapbox_key', 'overlay', 'spec', 'tooltips', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -19,6 +19,8 @@ Keyword arguments:
 - `height` (Real; optional): Height of the map component container as pixels or CSS string
 (optional) Default 500
 - `lastEvent` (Dict; optional): The last event that was triggered. This is a read-only property.
+- `mapbox_key` (String; optional): mapbox API key for mapbox basemaps
+(optional)
 - `overlay` (String; optional): JSON spec of the overlay deck.gl instance
 (optional)
 - `spec` (String; required): JSON spec of the primary deck.gl instance
@@ -28,7 +30,7 @@ An additonal 'layer' property can be added to the tooltip objects to restrict th
 (optional) Default 100% of parent container
 """
 function dashdeckgl(; kwargs...)
-        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :lastEvent, :overlay, :spec, :tooltips, :width]
+        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :lastEvent, :mapbox_key, :overlay, :spec, :tooltips, :width]
         wild_props = Symbol[]
         return Component("dashdeckgl", "DashDeckgl", "dash_deckgl", available_props, wild_props; kwargs...)
 end

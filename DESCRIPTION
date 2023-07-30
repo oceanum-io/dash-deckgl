@@ -1,6 +1,6 @@
 Package: dashDeckgl
 Title: Deck.gl component for Dash
-Version: 0.2.1
+Version: 0.2.2
 Description: Deck.gl component for Dash
 Depends: R (>= 3.0.2)
 Imports: 

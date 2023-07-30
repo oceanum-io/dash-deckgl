@@ -76,6 +76,12 @@ DashDeckgl.propTypes = {
     overlay: PropTypes.string,
 
     /**
+     * mapbox API key for mapbox basemaps
+     * (optional)
+     * */
+    mapbox_key: PropTypes.string,
+
+    /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
