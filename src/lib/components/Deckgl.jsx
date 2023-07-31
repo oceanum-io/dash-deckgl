@@ -119,10 +119,7 @@ const DeckglMap = ({
             className="deckgl-map"
             style={{height, width, position: 'relative'}}
         >
-            <div
-                id="deckgl-primary"
-                style={{width: '100%', height: '100%', position: 'relative'}}
-            >
+            <div id="deckgl-primary" style={{width: '100%', height: '100%'}}>
                 {viewState && (
                     <DeckGL
                         viewState={viewState}
@@ -143,7 +140,6 @@ const DeckglMap = ({
                     style={{
                         width: '100%',
                         height: '100%',
-                        position: 'relative',
                         pointerEvents: 'none',
                     }}
                 >
