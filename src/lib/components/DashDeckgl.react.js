@@ -90,7 +90,12 @@ DashDeckgl.propTypes = {
     /**
      * The last event that was triggered. This is a read-only property.
      */
-    lastEvent: PropTypes.object,
+    lastevent: PropTypes.object,
+
+    /**
+     * Current viewstate of the map.
+     */
+    viewstate: PropTypes.object,
 };
 
 export const defaultProps = DashDeckgl.defaultProps;

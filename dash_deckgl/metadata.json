@@ -88,12 +88,19 @@
         "required": false,
         "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
       },
-      "lastEvent": {
+      "lastevent": {
         "type": {
           "name": "object"
         },
         "required": false,
         "description": "The last event that was triggered. This is a read-only property."
+      },
+      "viewstate": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Current viewstate of the map."
       }
     }
   }

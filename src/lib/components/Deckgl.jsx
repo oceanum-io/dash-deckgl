@@ -17,7 +17,8 @@ const DeckglMap = ({
     overlay,
     mapbox_key,
     setProps,
-    lastEvent,
+    lastevent,
+    viewstate,
 }) => {
     const [primaryProps, setPrimaryProps] = useState({});
     const [overlayProps, setOverlayProps] = useState({});
@@ -25,7 +26,7 @@ const DeckglMap = ({
     const [configurationLoaded, setConfigurationLoaded] = useState(false);
     const jsonConverter = useConverter();
 
-    const [viewState, setViewState] = useState(null);
+    const [vState, setVState] = useState(viewstate);
 
     const descriptions = [];
     if (description) {
@@ -62,15 +63,6 @@ const DeckglMap = ({
     const handlers = {
         onClick: (info) => handleEvent('click', info),
         onHover: (info) => handleEvent('hover', info),
-        // onViewStateChange: ({viewState, interactionState, oldViewState}) => {
-        //     const viewport = new WebMercatorViewport(viewState);
-        //     viewState.nw = viewport.unproject([0, 0]);
-        //     viewState.se = viewport.unproject([
-        //         viewport.width,
-        //         viewport.height,
-        //     ]);
-        //     handleEvent('deck-view-state-change-event', viewState);
-        // },
         onDragStart: (info) => handleEvent('drag-start', info),
         onDrag: (info) => handleEvent('drag', info),
         onDragEnd: (info) => handleEvent('drag-end', info),
@@ -91,11 +83,11 @@ const DeckglMap = ({
         const newPrimaryProps = jsonConverter.convert(spec);
         if (newPrimaryProps.initialViewState) {
             if (
-                !viewState ||
+                !vState ||
                 (newPrimaryProps.initialViewState.longitude &&
                     newPrimaryProps.initialViewState.latitude)
             ) {
-                setViewState(newPrimaryProps.initialViewState);
+                setVState(newPrimaryProps.initialViewState);
             }
         }
         setPrimaryProps({...primaryProps, ...newPrimaryProps});
@@ -107,7 +99,8 @@ const DeckglMap = ({
     }, [overlay, jsonConverter]);
 
     const updateViewState = useCallback(({viewState}) => {
-        setViewState(viewState);
+        setVState(viewState);
+        setProps({viewstate: viewState});
     }, []);
 
     // if (google_maps_key) {
@@ -120,9 +113,9 @@ const DeckglMap = ({
             style={{height, width, position: 'relative'}}
         >
             <div id="deckgl-primary" style={{width: '100%', height: '100%'}}>
-                {viewState && (
+                {vState && (
                     <DeckGL
-                        viewState={viewState}
+                        viewState={vState}
                         onViewStateChange={updateViewState}
                         {...sharedProps}
                         {...primaryProps}
@@ -144,7 +137,7 @@ const DeckglMap = ({
                     }}
                 >
                     <DeckGL
-                        viewState={viewState}
+                        viewState={vState}
                         contoller={false}
                         {...sharedProps}
                         {...overlayProps}

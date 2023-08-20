@@ -32,7 +32,7 @@ Keyword arguments:
     Height of the map component container as pixels or CSS string
     (optional) Default 500.
 
-- lastEvent (dict; optional):
+- lastevent (dict; optional):
     The last event that was triggered. This is a read-only property.
 
 - mapbox_key (string; optional):
@@ -49,6 +49,9 @@ Keyword arguments:
     specifcation. An additonal 'layer' property can be added to the
     tooltip objects to restrict their action to that layer ID.
 
+- viewstate (dict; optional):
+    Current viewstate of the map.
+
 - width (number; optional):
     width of the map component container as pixels or CSS string
     (optional) Default 100% of parent container."""
@@ -57,10 +60,10 @@ Keyword arguments:
     _namespace = 'dash_deckgl'
     _type = 'DashDeckgl'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, mapbox_key=Component.UNDEFINED, lastEvent=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'mapbox_key', 'overlay', 'spec', 'tooltips', 'width']
+    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, mapbox_key=Component.UNDEFINED, lastevent=Component.UNDEFINED, viewstate=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastevent', 'mapbox_key', 'overlay', 'spec', 'tooltips', 'viewstate', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastEvent', 'mapbox_key', 'overlay', 'spec', 'tooltips', 'width']
+        self.available_properties = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'lastevent', 'mapbox_key', 'overlay', 'spec', 'tooltips', 'viewstate', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

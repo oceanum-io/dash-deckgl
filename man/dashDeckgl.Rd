@@ -11,9 +11,9 @@ DashDeckGL is a wrapper of deck.gl for Dash. It takes a deck.gl JSON spec, conve
 
 \usage{
 dashDeckgl(id=NULL, configuration=NULL, customLibraries=NULL,
-description=NULL, events=NULL, height=NULL, lastEvent=NULL,
+description=NULL, events=NULL, height=NULL, lastevent=NULL,
 mapbox_key=NULL, overlay=NULL, spec=NULL, tooltips=NULL,
-width=NULL)
+viewstate=NULL, width=NULL)
 }
 
 \arguments{
@@ -32,7 +32,7 @@ width=NULL)
 \item{height}{Numeric. Height of the map component container as pixels or CSS string
 (optional) Default 500}
 
-\item{lastEvent}{Named list. The last event that was triggered. This is a read-only property.}
+\item{lastevent}{Named list. The last event that was triggered. This is a read-only property.}
 
 \item{mapbox_key}{Character. mapbox API key for mapbox basemaps
 (optional)}
@@ -44,6 +44,8 @@ width=NULL)
 
 \item{tooltips}{Unnamed list. An array of tooltip objects that follows he pydeck tooltip specifcation.
 An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.}
+
+\item{viewstate}{Named list. Current viewstate of the map.}
 
 \item{width}{Numeric. width of the map component container as pixels or CSS string
 (optional) Default 100\% of parent container}

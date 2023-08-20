@@ -18,7 +18,7 @@ Keyword arguments:
 ['click','hover','drag']
 - `height` (Real; optional): Height of the map component container as pixels or CSS string
 (optional) Default 500
-- `lastEvent` (Dict; optional): The last event that was triggered. This is a read-only property.
+- `lastevent` (Dict; optional): The last event that was triggered. This is a read-only property.
 - `mapbox_key` (String; optional): mapbox API key for mapbox basemaps
 (optional)
 - `overlay` (String; optional): JSON spec of the overlay deck.gl instance
@@ -26,11 +26,12 @@ Keyword arguments:
 - `spec` (String; required): JSON spec of the primary deck.gl instance
 - `tooltips` (Array; optional): An array of tooltip objects that follows he pydeck tooltip specifcation.
 An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.
+- `viewstate` (Dict; optional): Current viewstate of the map.
 - `width` (Real; optional): width of the map component container as pixels or CSS string
 (optional) Default 100% of parent container
 """
 function dashdeckgl(; kwargs...)
-        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :lastEvent, :mapbox_key, :overlay, :spec, :tooltips, :width]
+        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :lastevent, :mapbox_key, :overlay, :spec, :tooltips, :viewstate, :width]
         wild_props = Symbol[]
         return Component("dashdeckgl", "DashDeckgl", "dash_deckgl", available_props, wild_props; kwargs...)
 end
