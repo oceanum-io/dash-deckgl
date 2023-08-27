@@ -39,13 +39,13 @@ DashDeckgl.propTypes = {
      * width of the map component container as pixels or CSS string
      * (optional) Default 100% of parent container
      * */
-    width: PropTypes.number,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
     /**
      * Height of the map component container as pixels or CSS string
      * (optional) Default 500
      * */
-    height: PropTypes.number,
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
     /**
      * Array of custom libraries to load. For example:
@@ -74,6 +74,12 @@ DashDeckgl.propTypes = {
      * (optional)
      * */
     overlay: PropTypes.string,
+
+    /**
+     * Landmask basmap to add to the map with properties map_style
+     * (optional)
+     * */
+    landmask: PropTypes.object,
 
     /**
      * mapbox API key for mapbox basemaps

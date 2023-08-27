@@ -18,6 +18,8 @@ Keyword arguments:
 ['click','hover','drag']
 - `height` (Real; optional): Height of the map component container as pixels or CSS string
 (optional) Default 500
+- `landmask` (Dict; optional): Landmask basmap to add to the map with properties map_style
+(optional)
 - `lastevent` (Dict; optional): The last event that was triggered. This is a read-only property.
 - `mapbox_key` (String; optional): mapbox API key for mapbox basemaps
 (optional)
@@ -31,7 +33,7 @@ An additonal 'layer' property can be added to the tooltip objects to restrict th
 (optional) Default 100% of parent container
 """
 function dashdeckgl(; kwargs...)
-        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :lastevent, :mapbox_key, :overlay, :spec, :tooltips, :viewstate, :width]
+        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :landmask, :lastevent, :mapbox_key, :overlay, :spec, :tooltips, :viewstate, :width]
         wild_props = Symbol[]
         return Component("dashdeckgl", "DashDeckgl", "dash_deckgl", available_props, wild_props; kwargs...)
 end

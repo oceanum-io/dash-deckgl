@@ -11,9 +11,9 @@ DashDeckGL is a wrapper of deck.gl for Dash. It takes a deck.gl JSON spec, conve
 
 \usage{
 dashDeckgl(id=NULL, configuration=NULL, customLibraries=NULL,
-description=NULL, events=NULL, height=NULL, lastevent=NULL,
-mapbox_key=NULL, overlay=NULL, spec=NULL, tooltips=NULL,
-viewstate=NULL, width=NULL)
+description=NULL, events=NULL, height=NULL, landmask=NULL,
+lastevent=NULL, mapbox_key=NULL, overlay=NULL, spec=NULL,
+tooltips=NULL, viewstate=NULL, width=NULL)
 }
 
 \arguments{
@@ -31,6 +31,9 @@ viewstate=NULL, width=NULL)
 
 \item{height}{Numeric. Height of the map component container as pixels or CSS string
 (optional) Default 500}
+
+\item{landmask}{Named list. Landmask basmap to add to the map with properties map_style
+(optional)}
 
 \item{lastevent}{Named list. The last event that was triggered. This is a read-only property.}
 

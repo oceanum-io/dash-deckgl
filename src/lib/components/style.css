@@ -1,0 +1,7 @@
+#landmask {
+    z-index: 1 !important;
+    pointer-events: none;
+}
+.deck-tooltip {
+    z-index: 2 !important;
+}

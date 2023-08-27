@@ -1,11 +1,29 @@
-import React, {useEffect, useState, useCallback} from 'react';
-import {DeckGL} from '@deck.gl/react';
 import {BASEMAP} from '@deck.gl/carto';
+import {DeckGL} from '@deck.gl/react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Map} from 'react-map-gl';
 
+import {ConverterProvider, useConverter} from './utils/json-converter';
 import {loadMapboxCSS} from './utils/mapbox-utils';
-import {useConverter, ConverterProvider} from './utils/json-converter';
 import makeTooltip from './utils/widget-tooltip';
+
+import './style.css';
+
+const useDebounce = (value, milliSeconds) => {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedValue(value);
+        }, milliSeconds);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [value, milliSeconds]);
+
+    return debouncedValue;
+};
 
 const DeckglMap = ({
     spec,
@@ -19,14 +37,15 @@ const DeckglMap = ({
     setProps,
     lastevent,
     viewstate,
+    landmask,
 }) => {
     const [primaryProps, setPrimaryProps] = useState({});
     const [overlayProps, setOverlayProps] = useState({});
     const [librariesLoaded, setLibrariesLoaded] = useState(false);
     const [configurationLoaded, setConfigurationLoaded] = useState(false);
     const jsonConverter = useConverter();
-
     const [vState, setVState] = useState(viewstate);
+    const dbViewState = useDebounce(vState, 500);
 
     const descriptions = [];
     if (description) {
@@ -49,15 +68,17 @@ const DeckglMap = ({
         (eventType, info) => {
             if (events.includes(eventType)) {
                 setProps({
-                    lastEvent: {
+                    lastevent: {
+                        layerId: info.layer.id,
                         ...info.object,
                         coordinate: info.coordinate,
                         eventType,
                     },
+                    viewstate: dbViewState,
                 });
             }
         },
-        [events]
+        [events, dbViewState]
     );
 
     const handlers = {
@@ -98,14 +119,19 @@ const DeckglMap = ({
         setOverlayProps({...overlayProps, ...newOverlayProps});
     }, [overlay, jsonConverter]);
 
+    useEffect(() => {
+        if (viewstate && Object.keys(viewstate).length > 0) {
+            setVState({...vState, ...viewstate});
+        }
+    }, [viewstate]);
+
+    useEffect(() => {
+        setProps({viewstate: dbViewState});
+    }, [dbViewState]);
+
     const updateViewState = useCallback(({viewState}) => {
         setVState(viewState);
-        setProps({viewstate: viewState});
     }, []);
-
-    // if (google_maps_key) {
-    //     return <div>Google map overlays not supported</div>;
-    // }
 
     return (
         <div
@@ -119,11 +145,25 @@ const DeckglMap = ({
                         onViewStateChange={updateViewState}
                         {...sharedProps}
                         {...primaryProps}
+                        getCursor={({isDragging, isHovering}) =>
+                            isDragging
+                                ? 'grabbing'
+                                : isHovering
+                                ? 'pointer'
+                                : 'crosshair'
+                        }
                     >
                         <Map
                             mapStyle={primaryProps.mapStyle || BASEMAP.POSITRON}
                             mapboxAccessToken={mapbox_key}
                         />
+                        {landmask && landmask.map_style && (
+                            <Map
+                                id="landmask"
+                                mapStyle={landmask.map_style}
+                                mapboxAccessToken={mapbox_key}
+                            />
+                        )}
                     </DeckGL>
                 )}
             </div>

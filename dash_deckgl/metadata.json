@@ -74,6 +74,13 @@
         "required": false,
         "description": "JSON spec of the overlay deck.gl instance\n(optional)"
       },
+      "landmask": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Landmask basmap to add to the map with properties map_style\n(optional)"
+      },
       "mapbox_key": {
         "type": {
           "name": "string"
