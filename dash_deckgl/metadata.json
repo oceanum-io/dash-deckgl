@@ -27,14 +27,30 @@
       },
       "width": {
         "type": {
-          "name": "number"
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "string"
+            }
+          ]
         },
         "required": false,
         "description": "width of the map component container as pixels or CSS string\n(optional) Default 100% of parent container"
       },
       "height": {
         "type": {
-          "name": "number"
+          "name": "union",
+          "value": [
+            {
+              "name": "number"
+            },
+            {
+              "name": "string"
+            }
+          ]
         },
         "required": false,
         "description": "Height of the map component container as pixels or CSS string\n(optional) Default 500"
@@ -105,6 +121,13 @@
       "viewstate": {
         "type": {
           "name": "object"
+        },
+        "required": false,
+        "description": "Current viewstate of the map."
+      },
+      "mergelayers": {
+        "type": {
+          "name": "bool"
         },
         "required": false,
         "description": "Current viewstate of the map."

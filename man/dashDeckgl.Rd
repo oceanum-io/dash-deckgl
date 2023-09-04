@@ -12,8 +12,9 @@ DashDeckGL is a wrapper of deck.gl for Dash. It takes a deck.gl JSON spec, conve
 \usage{
 dashDeckgl(id=NULL, configuration=NULL, customLibraries=NULL,
 description=NULL, events=NULL, height=NULL, landmask=NULL,
-lastevent=NULL, mapbox_key=NULL, overlay=NULL, spec=NULL,
-tooltips=NULL, viewstate=NULL, width=NULL)
+lastevent=NULL, mapbox_key=NULL, mergelayers=NULL,
+overlay=NULL, spec=NULL, tooltips=NULL, viewstate=NULL,
+width=NULL)
 }
 
 \arguments{
@@ -29,7 +30,7 @@ tooltips=NULL, viewstate=NULL, width=NULL)
 \item{events}{Unnamed list. List of events to listen to. Can be any of:
 ['click','hover','drag']}
 
-\item{height}{Numeric. Height of the map component container as pixels or CSS string
+\item{height}{Numeric | character. Height of the map component container as pixels or CSS string
 (optional) Default 500}
 
 \item{landmask}{Named list. Landmask basmap to add to the map with properties map_style
@@ -39,6 +40,8 @@ tooltips=NULL, viewstate=NULL, width=NULL)
 
 \item{mapbox_key}{Character. mapbox API key for mapbox basemaps
 (optional)}
+
+\item{mergelayers}{Logical. Current viewstate of the map.}
 
 \item{overlay}{Character. JSON spec of the overlay deck.gl instance
 (optional)}
@@ -50,7 +53,7 @@ An additonal 'layer' property can be added to the tooltip objects to restrict th
 
 \item{viewstate}{Named list. Current viewstate of the map.}
 
-\item{width}{Numeric. width of the map component container as pixels or CSS string
+\item{width}{Numeric | character. width of the map component container as pixels or CSS string
 (optional) Default 100\% of parent container}
 }
 

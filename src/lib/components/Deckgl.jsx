@@ -38,6 +38,7 @@ const DeckglMap = ({
     lastevent,
     viewstate,
     landmask,
+    mergelayers,
 }) => {
     const [primaryProps, setPrimaryProps] = useState({});
     const [overlayProps, setOverlayProps] = useState({});
@@ -69,7 +70,7 @@ const DeckglMap = ({
             if (events.includes(eventType)) {
                 setProps({
                     lastevent: {
-                        layerId: info.layer.id,
+                        layerId: info.layer && info.layer.id,
                         ...info.object,
                         coordinate: info.coordinate,
                         eventType,
@@ -102,6 +103,15 @@ const DeckglMap = ({
 
     useEffect(() => {
         const newPrimaryProps = jsonConverter.convert(spec);
+        let newLayers = newPrimaryProps.layers;
+        if (primaryProps.layers && mergelayers) {
+            newLayers = [
+                ...newLayers,
+                ...primaryProps.layers.filter(
+                    (l) => !newLayers.find((nl) => nl.id === l.id)
+                ),
+            ];
+        }
         if (newPrimaryProps.initialViewState) {
             if (
                 !vState ||
@@ -111,7 +121,11 @@ const DeckglMap = ({
                 setVState(newPrimaryProps.initialViewState);
             }
         }
-        setPrimaryProps({...primaryProps, ...newPrimaryProps});
+        setPrimaryProps({
+            ...primaryProps,
+            ...newPrimaryProps,
+            layers: newLayers,
+        });
     }, [spec, jsonConverter]);
 
     useEffect(() => {
@@ -202,7 +216,7 @@ const DeckglMap = ({
                         position: 'absolute',
                         zIndex: 10,
                         [d.pos[0]]: 10,
-                        [d.pos[1]]: 10,
+                        [d.pos[1]]: d.pos[1] == 'top' ? 10 : 20,
                     }}
                     dangerouslySetInnerHTML={{__html: d.content}}
                 />

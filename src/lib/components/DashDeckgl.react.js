@@ -102,6 +102,11 @@ DashDeckgl.propTypes = {
      * Current viewstate of the map.
      */
     viewstate: PropTypes.object,
+
+    /**
+     * Current viewstate of the map.
+     */
+    mergelayers: PropTypes.bool,
 };
 
 export const defaultProps = DashDeckgl.defaultProps;

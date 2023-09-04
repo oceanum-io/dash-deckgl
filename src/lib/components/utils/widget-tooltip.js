@@ -134,6 +134,15 @@ export function substituteIn(template, json) {
     return output;
 }
 
+const flipTooltip = ({x, y, viewport}) => {
+    const {width, height} = viewport;
+    if (x > width * 0.5) {
+        return `translate(calc(${x}px - 100%), ${y}px)`;
+    } else {
+        return `translate(${x}px, ${y}px)`;
+    }
+};
+
 export default function makeTooltip(tooltips) {
     /*
      * If explictly no tooltip passed by user, return null
@@ -156,8 +165,11 @@ export default function makeTooltip(tooltips) {
                     return null;
                 }
 
+                const style = tooltip.style || DEFAULT_STYLE;
+                style.transform = flipTooltip(pickedInfo);
+
                 formattedTooltip = {
-                    style: tooltip.style || DEFAULT_STYLE,
+                    style,
                 };
 
                 if (tooltip.html) {
