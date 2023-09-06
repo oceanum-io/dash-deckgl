@@ -107,7 +107,8 @@ export function substituteIn(template, json) {
     const propsKey = 'properties';
     const keyPattern = /{[^}]*}/g;
     const cleanKey = (k) => k.replace(/[{}]/g, '');
-    const keys = [...new Set(template.match(keyPattern).map(cleanKey))];
+    const match = template.match(keyPattern);
+    const keys = match ? [...new Set(match.map(cleanKey))] : [];
 
     for (const key of keys) {
         if (key.includes('.')) {
