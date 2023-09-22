@@ -166,6 +166,7 @@ const DeckglMap = ({
                                 ? 'pointer'
                                 : 'crosshair'
                         }
+                        controller={{touchRotate: true}}
                     >
                         <Map
                             mapStyle={primaryProps.mapStyle || BASEMAP.POSITRON}
