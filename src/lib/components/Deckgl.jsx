@@ -167,16 +167,26 @@ const DeckglMap = ({
                                 : 'crosshair'
                         }
                         controller={{touchRotate: true}}
+                        glOptions={{
+                            preserveDrawingBuffer:
+                                primaryProps.preserveDrawingBuffer,
+                        }}
                     >
                         <Map
                             mapStyle={primaryProps.mapStyle || BASEMAP.POSITRON}
                             mapboxAccessToken={mapbox_key}
+                            preserveDrawingBuffer={
+                                primaryProps.preserveDrawingBuffer
+                            }
                         />
                         {landmask && landmask.map_style && (
                             <Map
                                 id="landmask"
                                 mapStyle={landmask.map_style}
                                 mapboxAccessToken={mapbox_key}
+                                preserveDrawingBuffer={
+                                    primaryProps.preserveDrawingBuffer
+                                }
                             />
                         )}
                     </DeckGL>
