@@ -13,8 +13,8 @@ DashDeckGL is a wrapper of deck.gl for Dash. It takes a deck.gl JSON spec, conve
 dashDeckgl(id=NULL, configuration=NULL, customLibraries=NULL,
 description=NULL, events=NULL, height=NULL, landmask=NULL,
 lastevent=NULL, mapbox_key=NULL, mergelayers=NULL,
-overlay=NULL, spec=NULL, tooltips=NULL, viewstate=NULL,
-width=NULL)
+overlay=NULL, preserveDrawingBuffer=NULL, spec=NULL,
+tooltips=NULL, viewstate=NULL, width=NULL)
 }
 
 \arguments{
@@ -41,10 +41,12 @@ width=NULL)
 \item{mapbox_key}{Character. mapbox API key for mapbox basemaps
 (optional)}
 
-\item{mergelayers}{Logical. Current viewstate of the map.}
+\item{mergelayers}{Logical. Merge layers}
 
 \item{overlay}{Character. JSON spec of the overlay deck.gl instance
 (optional)}
+
+\item{preserveDrawingBuffer}{Logical. Add preserveDrawingBuffer to the WebGL context}
 
 \item{spec}{Character. JSON spec of the primary deck.gl instance}
 

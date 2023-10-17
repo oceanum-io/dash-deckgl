@@ -2,7 +2,7 @@
 name = "DashDeckgl"
 uuid = "1b08a953-4be3-4667-9a23-9b0272bb9109"
 authors = ["Oceanum developers <developers@oceanum.science>"]
-version = "0.4.4"
+version = "0.4.5"
 
 [deps]
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"

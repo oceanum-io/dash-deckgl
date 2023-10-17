@@ -23,9 +23,10 @@ Keyword arguments:
 - `lastevent` (Dict; optional): The last event that was triggered. This is a read-only property.
 - `mapbox_key` (String; optional): mapbox API key for mapbox basemaps
 (optional)
-- `mergelayers` (Bool; optional): Current viewstate of the map.
+- `mergelayers` (Bool; optional): Merge layers
 - `overlay` (String; optional): JSON spec of the overlay deck.gl instance
 (optional)
+- `preserveDrawingBuffer` (Bool; optional): Add preserveDrawingBuffer to the WebGL context
 - `spec` (String; required): JSON spec of the primary deck.gl instance
 - `tooltips` (Array; optional): An array of tooltip objects that follows he pydeck tooltip specifcation.
 An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.
@@ -34,7 +35,7 @@ An additonal 'layer' property can be added to the tooltip objects to restrict th
 (optional) Default 100% of parent container
 """
 function dashdeckgl(; kwargs...)
-        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :landmask, :lastevent, :mapbox_key, :mergelayers, :overlay, :spec, :tooltips, :viewstate, :width]
+        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :landmask, :lastevent, :mapbox_key, :mergelayers, :overlay, :preserveDrawingBuffer, :spec, :tooltips, :viewstate, :width]
         wild_props = Symbol[]
         return Component("dashdeckgl", "DashDeckgl", "dash_deckgl", available_props, wild_props; kwargs...)
 end

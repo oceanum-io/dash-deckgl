@@ -104,9 +104,15 @@ DashDeckgl.propTypes = {
     viewstate: PropTypes.object,
 
     /**
-     * Current viewstate of the map.
+     * Merge layers
      */
     mergelayers: PropTypes.bool,
+
+    /**
+     * Add preserveDrawingBuffer to the WebGL context
+     *
+     * */
+    preserveDrawingBuffer: PropTypes.bool,
 };
 
 export const defaultProps = DashDeckgl.defaultProps;

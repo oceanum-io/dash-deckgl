@@ -39,6 +39,7 @@ const DeckglMap = ({
     viewstate,
     landmask,
     mergelayers,
+    preserveDrawingBuffer,
 }) => {
     const [primaryProps, setPrimaryProps] = useState({});
     const [overlayProps, setOverlayProps] = useState({});
@@ -103,8 +104,8 @@ const DeckglMap = ({
 
     useEffect(() => {
         const newPrimaryProps = jsonConverter.convert(spec);
-        let newLayers = newPrimaryProps.layers;
-        if (primaryProps.layers && mergelayers) {
+        let newLayers = newPrimaryProps.layers.filter((nl) => !!nl); //Layer can be null if supporting library not yet loaded
+        if (primaryProps.layers && primaryProps.layers.length && mergelayers) {
             newLayers = [
                 ...newLayers,
                 ...primaryProps.layers.filter(
@@ -168,25 +169,20 @@ const DeckglMap = ({
                         }
                         controller={{touchRotate: true}}
                         glOptions={{
-                            preserveDrawingBuffer:
-                                primaryProps.preserveDrawingBuffer,
+                            preserveDrawingBuffer: preserveDrawingBuffer,
                         }}
                     >
                         <Map
                             mapStyle={primaryProps.mapStyle || BASEMAP.POSITRON}
                             mapboxAccessToken={mapbox_key}
-                            preserveDrawingBuffer={
-                                primaryProps.preserveDrawingBuffer
-                            }
+                            preserveDrawingBuffer={preserveDrawingBuffer}
                         />
                         {landmask && landmask.map_style && (
                             <Map
                                 id="landmask"
                                 mapStyle={landmask.map_style}
                                 mapboxAccessToken={mapbox_key}
-                                preserveDrawingBuffer={
-                                    primaryProps.preserveDrawingBuffer
-                                }
+                                preserveDrawingBuffer={preserveDrawingBuffer}
                             />
                         )}
                     </DeckGL>

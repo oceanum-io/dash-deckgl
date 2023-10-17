@@ -130,7 +130,14 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Current viewstate of the map."
+        "description": "Merge layers"
+      },
+      "preserveDrawingBuffer": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Add preserveDrawingBuffer to the WebGL context"
       }
     }
   }
