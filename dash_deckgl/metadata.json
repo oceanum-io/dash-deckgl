@@ -132,6 +132,13 @@
         "required": false,
         "description": "Merge layers"
       },
+      "cursorPosition": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Show cursor position\n(optional)\nOne of: ['top-left','top-right','bottom-left','bottom-right','none']\nDefault 'none'"
+      },
       "preserveDrawingBuffer": {
         "type": {
           "name": "bool"

@@ -1,6 +1,6 @@
 import {BASEMAP} from '@deck.gl/carto';
 import {DeckGL} from '@deck.gl/react';
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState, useRef} from 'react';
 import {Map} from 'react-map-gl';
 
 import {ConverterProvider, useConverter} from './utils/json-converter';
@@ -38,7 +38,8 @@ const DeckglMap = ({
     lastevent,
     viewstate,
     landmask,
-    mergelayers,
+    mergeLayers,
+    cursorPosition = 'none',
     preserveDrawingBuffer,
 }) => {
     const [primaryProps, setPrimaryProps] = useState({});
@@ -48,6 +49,8 @@ const DeckglMap = ({
     const jsonConverter = useConverter();
     const [vState, setVState] = useState(viewstate);
     const dbViewState = useDebounce(vState, 500);
+
+    const cursorpos = useRef();
 
     const descriptions = [];
     if (description) {
@@ -65,6 +68,14 @@ const DeckglMap = ({
             }
         }
     }
+    const cp = [
+        'top-right',
+        'top-left',
+        'bottom-right',
+        'bottom-left',
+    ].includes(cursorPosition)
+        ? cursorPosition.split('-')
+        : null;
 
     const handleEvent = useCallback(
         (eventType, info) => {
@@ -78,6 +89,11 @@ const DeckglMap = ({
                     },
                     viewstate: dbViewState,
                 });
+            }
+            if (eventType === 'hover' && cp && cursorpos.current) {
+                const coords = info.coordinate;
+                cursorpos.current.innerHTML =
+                    coords[0].toFixed(4) + ', ' + coords[1].toFixed(4);
             }
         },
         [events, dbViewState]
@@ -105,7 +121,7 @@ const DeckglMap = ({
     useEffect(() => {
         const newPrimaryProps = jsonConverter.convert(spec);
         let newLayers = newPrimaryProps.layers.filter((nl) => !!nl); //Layer can be null if supporting library not yet loaded
-        if (primaryProps.layers && primaryProps.layers.length && mergelayers) {
+        if (primaryProps.layers && primaryProps.layers.length && mergeLayers) {
             newLayers = [
                 ...newLayers,
                 ...primaryProps.layers.filter(
@@ -218,7 +234,7 @@ const DeckglMap = ({
             {descriptions.map((d, i) => (
                 <div
                     key={i}
-                    className="description"
+                    className="deckgl-description"
                     style={{
                         position: 'absolute',
                         zIndex: 10,
@@ -228,6 +244,18 @@ const DeckglMap = ({
                     dangerouslySetInnerHTML={{__html: d.content}}
                 />
             ))}
+            {cp && (
+                <div
+                    ref={cursorpos}
+                    className={'deckgl-cursor-position'}
+                    style={{
+                        position: 'absolute',
+                        zIndex: 20,
+                        [cp[0]]: 10,
+                        [cp[1]]: cp[1] == 'top' ? 10 : 20,
+                    }}
+                ></div>
+            )}
         </div>
     );
 };

@@ -106,8 +106,15 @@ DashDeckgl.propTypes = {
     /**
      * Merge layers
      */
-    mergelayers: PropTypes.bool,
+    mergeLayers: PropTypes.bool,
 
+    /**
+     * Show cursor position
+     * (optional)
+     * One of: ['top-left','top-right','bottom-left','bottom-right','none']
+     * Default 'none'
+     */
+    cursorPosition: PropTypes.string,
     /**
      * Add preserveDrawingBuffer to the WebGL context
      *

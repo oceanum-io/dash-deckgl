@@ -10,17 +10,22 @@ DashDeckGL is a wrapper of deck.gl for Dash. It takes a deck.gl JSON spec, conve
 }
 
 \usage{
-dashDeckgl(id=NULL, configuration=NULL, customLibraries=NULL,
-description=NULL, events=NULL, height=NULL, landmask=NULL,
-lastevent=NULL, mapbox_key=NULL, mergelayers=NULL,
-overlay=NULL, preserveDrawingBuffer=NULL, spec=NULL,
-tooltips=NULL, viewstate=NULL, width=NULL)
+dashDeckgl(id=NULL, configuration=NULL, cursorPosition=NULL,
+customLibraries=NULL, description=NULL, events=NULL,
+height=NULL, landmask=NULL, lastevent=NULL, mapbox_key=NULL,
+mergelayers=NULL, overlay=NULL, preserveDrawingBuffer=NULL,
+spec=NULL, tooltips=NULL, viewstate=NULL, width=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
 \item{configuration}{Named list. Addiitional configuration}
+
+\item{cursorPosition}{Character. Show cursor position
+(optional)
+One of: ['top-left','top-right','bottom-left','bottom-right','none']
+Default 'none'}
 
 \item{customLibraries}{Unnamed list. Array of custom libraries to load. For example:
 [{libraryName: 'DeckGriddedLayers', resourceUri: 'https://assets.oceanum.io/packages/deck-gl-grid/bundle.umd.cjs'}]}

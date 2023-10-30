@@ -11,6 +11,10 @@ It takes a deck.gl JSON spec, converts it to a React component in aplotly dash a
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
 - `configuration` (Dict; optional): Addiitional configuration
+- `cursorPosition` (String; optional): Show cursor position
+(optional)
+One of: ['top-left','top-right','bottom-left','bottom-right','none']
+Default 'none'
 - `customLibraries` (Array; optional): Array of custom libraries to load. For example:
 [{libraryName: 'DeckGriddedLayers', resourceUri: 'https://assets.oceanum.io/packages/deck-gl-grid/bundle.umd.cjs'}]
 - `description` (Dict; optional): HTML of description elements
@@ -35,7 +39,7 @@ An additonal 'layer' property can be added to the tooltip objects to restrict th
 (optional) Default 100% of parent container
 """
 function dashdeckgl(; kwargs...)
-        available_props = Symbol[:id, :configuration, :customLibraries, :description, :events, :height, :landmask, :lastevent, :mapbox_key, :mergelayers, :overlay, :preserveDrawingBuffer, :spec, :tooltips, :viewstate, :width]
+        available_props = Symbol[:id, :configuration, :cursorPosition, :customLibraries, :description, :events, :height, :landmask, :lastevent, :mapbox_key, :mergelayers, :overlay, :preserveDrawingBuffer, :spec, :tooltips, :viewstate, :width]
         wild_props = Symbol[]
         return Component("dashdeckgl", "DashDeckgl", "dash_deckgl", available_props, wild_props; kwargs...)
 end

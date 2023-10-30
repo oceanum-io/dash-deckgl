@@ -16,6 +16,11 @@ Keyword arguments:
 - configuration (dict; optional):
     Addiitional configuration.
 
+- cursorPosition (string; optional):
+    Show cursor position (optional) One of:
+    ['top-left','top-right','bottom-left','bottom-right','none']
+    Default 'none'.
+
 - customLibraries (list; optional):
     Array of custom libraries to load. For example: [{libraryName:
     'DeckGriddedLayers', resourceUri:
@@ -70,10 +75,10 @@ Keyword arguments:
     _namespace = 'dash_deckgl'
     _type = 'DashDeckgl'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, landmask=Component.UNDEFINED, mapbox_key=Component.UNDEFINED, lastevent=Component.UNDEFINED, viewstate=Component.UNDEFINED, mergelayers=Component.UNDEFINED, preserveDrawingBuffer=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'mergelayers', 'overlay', 'preserveDrawingBuffer', 'spec', 'tooltips', 'viewstate', 'width']
+    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, landmask=Component.UNDEFINED, mapbox_key=Component.UNDEFINED, lastevent=Component.UNDEFINED, viewstate=Component.UNDEFINED, mergelayers=Component.UNDEFINED, cursorPosition=Component.UNDEFINED, preserveDrawingBuffer=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'configuration', 'cursorPosition', 'customLibraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'mergelayers', 'overlay', 'preserveDrawingBuffer', 'spec', 'tooltips', 'viewstate', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'configuration', 'customLibraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'mergelayers', 'overlay', 'preserveDrawingBuffer', 'spec', 'tooltips', 'viewstate', 'width']
+        self.available_properties = ['id', 'configuration', 'cursorPosition', 'customLibraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'mergelayers', 'overlay', 'preserveDrawingBuffer', 'spec', 'tooltips', 'viewstate', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
