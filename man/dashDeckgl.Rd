@@ -10,11 +10,12 @@ DashDeckGL is a wrapper of deck.gl for Dash. It takes a deck.gl JSON spec, conve
 }
 
 \usage{
-dashDeckgl(id=NULL, configuration=NULL, cursorPosition=NULL,
-customLibraries=NULL, description=NULL, events=NULL,
+dashDeckgl(id=NULL, configuration=NULL, cursor_position=NULL,
+custom_libraries=NULL, description=NULL, events=NULL,
 height=NULL, landmask=NULL, lastevent=NULL, mapbox_key=NULL,
-mergelayers=NULL, overlay=NULL, preserveDrawingBuffer=NULL,
-spec=NULL, tooltips=NULL, viewstate=NULL, width=NULL)
+merge_layers=NULL, overlay=NULL,
+preserve_drawing_buffer=NULL, spec=NULL, tooltips=NULL,
+viewstate=NULL, width=NULL)
 }
 
 \arguments{
@@ -22,12 +23,12 @@ spec=NULL, tooltips=NULL, viewstate=NULL, width=NULL)
 
 \item{configuration}{Named list. Addiitional configuration}
 
-\item{cursorPosition}{Character. Show cursor position
+\item{cursor_position}{Character. Show cursor position
 (optional)
 One of: ['top-left','top-right','bottom-left','bottom-right','none']
 Default 'none'}
 
-\item{customLibraries}{Unnamed list. Array of custom libraries to load. For example:
+\item{custom_libraries}{Unnamed list. Array of custom libraries to load. For example:
 [{libraryName: 'DeckGriddedLayers', resourceUri: 'https://assets.oceanum.io/packages/deck-gl-grid/bundle.umd.cjs'}]}
 
 \item{description}{Named list. HTML of description elements}
@@ -46,12 +47,12 @@ Default 'none'}
 \item{mapbox_key}{Character. mapbox API key for mapbox basemaps
 (optional)}
 
-\item{mergelayers}{Logical. Merge layers}
+\item{merge_layers}{Logical. Merge layers}
 
 \item{overlay}{Character. JSON spec of the overlay deck.gl instance
 (optional)}
 
-\item{preserveDrawingBuffer}{Logical. Add preserveDrawingBuffer to the WebGL context}
+\item{preserve_drawing_buffer}{Logical. Add preserveDrawingBuffer to the WebGL context}
 
 \item{spec}{Character. JSON spec of the primary deck.gl instance}
 

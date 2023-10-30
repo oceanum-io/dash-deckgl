@@ -38,8 +38,8 @@ const DeckglMap = ({
     lastevent,
     viewstate,
     landmask,
-    mergeLayers,
-    cursorPosition = 'none',
+    merge_layers,
+    cursor_position = 'none',
     preserveDrawingBuffer,
 }) => {
     const [primaryProps, setPrimaryProps] = useState({});
@@ -73,8 +73,8 @@ const DeckglMap = ({
         'top-left',
         'bottom-right',
         'bottom-left',
-    ].includes(cursorPosition)
-        ? cursorPosition.split('-')
+    ].includes(cursor_position)
+        ? cursor_position.split('-')
         : null;
 
     const handleEvent = useCallback(
@@ -92,8 +92,9 @@ const DeckglMap = ({
             }
             if (eventType === 'hover' && cp && cursorpos.current) {
                 const coords = info.coordinate;
-                cursorpos.current.innerHTML =
-                    coords[0].toFixed(4) + ', ' + coords[1].toFixed(4);
+                if (coords)
+                    cursorpos.current.innerHTML =
+                        coords[0].toFixed(4) + ', ' + coords[1].toFixed(4);
             }
         },
         [events, dbViewState]
@@ -121,7 +122,7 @@ const DeckglMap = ({
     useEffect(() => {
         const newPrimaryProps = jsonConverter.convert(spec);
         let newLayers = newPrimaryProps.layers.filter((nl) => !!nl); //Layer can be null if supporting library not yet loaded
-        if (primaryProps.layers && primaryProps.layers.length && mergeLayers) {
+        if (primaryProps.layers && primaryProps.layers.length && merge_layers) {
             newLayers = [
                 ...newLayers,
                 ...primaryProps.layers.filter(
@@ -198,7 +199,7 @@ const DeckglMap = ({
                                 id="landmask"
                                 mapStyle={landmask.map_style}
                                 mapboxAccessToken={mapbox_key}
-                                preserveDrawingBuffer={preserveDrawingBuffer}
+                                preserveDrawingBuffer={preserve_drawing_buffer}
                             />
                         )}
                     </DeckGL>
@@ -238,8 +239,8 @@ const DeckglMap = ({
                     style={{
                         position: 'absolute',
                         zIndex: 10,
-                        [d.pos[0]]: 10,
-                        [d.pos[1]]: d.pos[1] == 'top' ? 10 : 20,
+                        [d.pos[0]]: d.pos[0] == 'top' ? 10 : 20,
+                        [d.pos[1]]: 10,
                     }}
                     dangerouslySetInnerHTML={{__html: d.content}}
                 />
@@ -251,8 +252,8 @@ const DeckglMap = ({
                     style={{
                         position: 'absolute',
                         zIndex: 20,
-                        [cp[0]]: 10,
-                        [cp[1]]: cp[1] == 'top' ? 10 : 20,
+                        [cp[1]]: 10,
+                        [cp[0]]: cp[0] == 'top' ? 10 : 20,
                     }}
                 ></div>
             )}
@@ -263,7 +264,7 @@ const DeckglMap = ({
 const Deckgl = (props) => {
     return (
         <ConverterProvider
-            customLibraries={props.customLibraries}
+            customLibraries={props.custom_libraries}
             configuration={props.configuration}
         >
             <DeckglMap {...props} />

@@ -53,7 +53,7 @@ app.layout = html.Div(
             spec=r.to_json(),
             description={"top-right": colorbar},
             height=500,
-            customLibraries=pdk.settings.custom_libraries,
+            custom_libraries=pdk.settings.custom_libraries,
             tooltips=[
                 {
                     "html": "<b>Wind speed:</b> {value} kts",

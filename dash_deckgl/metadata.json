@@ -55,7 +55,7 @@
         "required": false,
         "description": "Height of the map component container as pixels or CSS string\n(optional) Default 500"
       },
-      "customLibraries": {
+      "custom_libraries": {
         "type": {
           "name": "array"
         },
@@ -125,21 +125,21 @@
         "required": false,
         "description": "Current viewstate of the map."
       },
-      "mergelayers": {
+      "merge_layers": {
         "type": {
           "name": "bool"
         },
         "required": false,
         "description": "Merge layers"
       },
-      "cursorPosition": {
+      "cursor_position": {
         "type": {
           "name": "string"
         },
         "required": false,
         "description": "Show cursor position\n(optional)\nOne of: ['top-left','top-right','bottom-left','bottom-right','none']\nDefault 'none'"
       },
-      "preserveDrawingBuffer": {
+      "preserve_drawing_buffer": {
         "type": {
           "name": "bool"
         },

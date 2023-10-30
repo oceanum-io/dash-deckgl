@@ -51,7 +51,7 @@ DashDeckgl.propTypes = {
      * Array of custom libraries to load. For example:
      * [{libraryName: 'DeckGriddedLayers', resourceUri: 'https://assets.oceanum.io/packages/deck-gl-grid/bundle.umd.cjs'}]
      * */
-    customLibraries: PropTypes.array,
+    custom_libraries: PropTypes.array,
 
     /**
      * Addiitional configuration
@@ -106,7 +106,7 @@ DashDeckgl.propTypes = {
     /**
      * Merge layers
      */
-    mergeLayers: PropTypes.bool,
+    merge_layers: PropTypes.bool,
 
     /**
      * Show cursor position
@@ -114,12 +114,12 @@ DashDeckgl.propTypes = {
      * One of: ['top-left','top-right','bottom-left','bottom-right','none']
      * Default 'none'
      */
-    cursorPosition: PropTypes.string,
+    cursor_position: PropTypes.string,
     /**
      * Add preserveDrawingBuffer to the WebGL context
      *
      * */
-    preserveDrawingBuffer: PropTypes.bool,
+    preserve_drawing_buffer: PropTypes.bool,
 };
 
 export const defaultProps = DashDeckgl.defaultProps;

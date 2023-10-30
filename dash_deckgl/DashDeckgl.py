@@ -16,12 +16,12 @@ Keyword arguments:
 - configuration (dict; optional):
     Addiitional configuration.
 
-- cursorPosition (string; optional):
+- cursor_position (string; optional):
     Show cursor position (optional) One of:
     ['top-left','top-right','bottom-left','bottom-right','none']
     Default 'none'.
 
-- customLibraries (list; optional):
+- custom_libraries (list; optional):
     Array of custom libraries to load. For example: [{libraryName:
     'DeckGriddedLayers', resourceUri:
     'https://assets.oceanum.io/packages/deck-gl-grid/bundle.umd.cjs'}].
@@ -47,13 +47,13 @@ Keyword arguments:
 - mapbox_key (string; optional):
     mapbox API key for mapbox basemaps (optional).
 
-- mergelayers (boolean; optional):
+- merge_layers (boolean; optional):
     Merge layers.
 
 - overlay (string; optional):
     JSON spec of the overlay deck.gl instance (optional).
 
-- preserveDrawingBuffer (boolean; optional):
+- preserve_drawing_buffer (boolean; optional):
     Add preserveDrawingBuffer to the WebGL context.
 
 - spec (string; required):
@@ -75,10 +75,10 @@ Keyword arguments:
     _namespace = 'dash_deckgl'
     _type = 'DashDeckgl'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, customLibraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, landmask=Component.UNDEFINED, mapbox_key=Component.UNDEFINED, lastevent=Component.UNDEFINED, viewstate=Component.UNDEFINED, mergelayers=Component.UNDEFINED, cursorPosition=Component.UNDEFINED, preserveDrawingBuffer=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'configuration', 'cursorPosition', 'customLibraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'mergelayers', 'overlay', 'preserveDrawingBuffer', 'spec', 'tooltips', 'viewstate', 'width']
+    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, custom_libraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, landmask=Component.UNDEFINED, mapbox_key=Component.UNDEFINED, lastevent=Component.UNDEFINED, viewstate=Component.UNDEFINED, merge_layers=Component.UNDEFINED, cursor_position=Component.UNDEFINED, preserve_drawing_buffer=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'configuration', 'cursor_position', 'custom_libraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'merge_layers', 'overlay', 'preserve_drawing_buffer', 'spec', 'tooltips', 'viewstate', 'width']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'configuration', 'cursorPosition', 'customLibraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'mergelayers', 'overlay', 'preserveDrawingBuffer', 'spec', 'tooltips', 'viewstate', 'width']
+        self.available_properties = ['id', 'configuration', 'cursor_position', 'custom_libraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'merge_layers', 'overlay', 'preserve_drawing_buffer', 'spec', 'tooltips', 'viewstate', 'width']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

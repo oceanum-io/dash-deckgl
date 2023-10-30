@@ -11,11 +11,11 @@ It takes a deck.gl JSON spec, converts it to a React component in aplotly dash a
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
 - `configuration` (Dict; optional): Addiitional configuration
-- `cursorPosition` (String; optional): Show cursor position
+- `cursor_position` (String; optional): Show cursor position
 (optional)
 One of: ['top-left','top-right','bottom-left','bottom-right','none']
 Default 'none'
-- `customLibraries` (Array; optional): Array of custom libraries to load. For example:
+- `custom_libraries` (Array; optional): Array of custom libraries to load. For example:
 [{libraryName: 'DeckGriddedLayers', resourceUri: 'https://assets.oceanum.io/packages/deck-gl-grid/bundle.umd.cjs'}]
 - `description` (Dict; optional): HTML of description elements
 - `events` (Array; optional): List of events to listen to. Can be any of:
@@ -27,10 +27,10 @@ Default 'none'
 - `lastevent` (Dict; optional): The last event that was triggered. This is a read-only property.
 - `mapbox_key` (String; optional): mapbox API key for mapbox basemaps
 (optional)
-- `mergelayers` (Bool; optional): Merge layers
+- `merge_layers` (Bool; optional): Merge layers
 - `overlay` (String; optional): JSON spec of the overlay deck.gl instance
 (optional)
-- `preserveDrawingBuffer` (Bool; optional): Add preserveDrawingBuffer to the WebGL context
+- `preserve_drawing_buffer` (Bool; optional): Add preserveDrawingBuffer to the WebGL context
 - `spec` (String; required): JSON spec of the primary deck.gl instance
 - `tooltips` (Array; optional): An array of tooltip objects that follows he pydeck tooltip specifcation.
 An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.
@@ -39,7 +39,7 @@ An additonal 'layer' property can be added to the tooltip objects to restrict th
 (optional) Default 100% of parent container
 """
 function dashdeckgl(; kwargs...)
-        available_props = Symbol[:id, :configuration, :cursorPosition, :customLibraries, :description, :events, :height, :landmask, :lastevent, :mapbox_key, :mergelayers, :overlay, :preserveDrawingBuffer, :spec, :tooltips, :viewstate, :width]
+        available_props = Symbol[:id, :configuration, :cursor_position, :custom_libraries, :description, :events, :height, :landmask, :lastevent, :mapbox_key, :merge_layers, :overlay, :preserve_drawing_buffer, :spec, :tooltips, :viewstate, :width]
         wild_props = Symbol[]
         return Component("dashdeckgl", "DashDeckgl", "dash_deckgl", available_props, wild_props; kwargs...)
 end
