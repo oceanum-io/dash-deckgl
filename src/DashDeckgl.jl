@@ -3,7 +3,7 @@ module DashDeckgl
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.5.0"
+const version = "0.5.2"
 
 include("jl/dashdeckgl.jl")
 

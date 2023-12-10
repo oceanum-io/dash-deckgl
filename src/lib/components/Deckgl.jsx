@@ -123,12 +123,13 @@ const DeckglMap = ({
         const newPrimaryProps = jsonConverter.convert(spec);
         let newLayers = newPrimaryProps.layers.filter((nl) => !!nl); //Layer can be null if supporting library not yet loaded
         if (primaryProps.layers && primaryProps.layers.length && merge_layers) {
-            newLayers = [
-                ...newLayers,
-                ...primaryProps.layers.filter(
-                    (l) => !newLayers.find((nl) => nl.id === l.id)
-                ),
-            ];
+            newLayers = primaryProps.layers
+                .map((l) => newLayers.find((nl) => nl.id === l.id) || l)
+                .concat(
+                    newLayers.filter(
+                        (nl) => !primaryProps.layers.find((l) => l.id === nl.id)
+                    )
+                );
         }
         if (newPrimaryProps.initialViewState) {
             if (
@@ -199,7 +200,7 @@ const DeckglMap = ({
                                 id="landmask"
                                 mapStyle={landmask.map_style}
                                 mapboxAccessToken={mapbox_key}
-                                preserveDrawingBuffer={preserve_drawing_buffer}
+                                preserveDrawingBuffer={preserveDrawingBuffer}
                             />
                         )}
                     </DeckGL>
