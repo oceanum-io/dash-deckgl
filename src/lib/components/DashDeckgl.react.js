@@ -26,7 +26,8 @@ DashDeckgl.propTypes = {
     id: PropTypes.string,
 
     /**
-     * JSON spec of the primary deck.gl instance
+     * JSON spec of the primary deck.gl instance.
+     * Omit initial_view_state from the spec to re-render the deck.gl map with new layers or properties but without resetting the view.
      */
     spec: PropTypes.string.isRequired,
 

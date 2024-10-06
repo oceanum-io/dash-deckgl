@@ -121,6 +121,7 @@ const DeckglMap = ({
 
     useEffect(() => {
         const newPrimaryProps = jsonConverter.convert(spec);
+        console.log(newPrimaryProps);
         let newLayers = newPrimaryProps.layers.filter((nl) => !!nl); //Layer can be null if supporting library not yet loaded
         if (primaryProps.layers && primaryProps.layers.length && merge_layers) {
             newLayers = primaryProps.layers
