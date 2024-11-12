@@ -42,8 +42,9 @@ const DeckglMap = ({
     cursor_position = 'none',
     preserveDrawingBuffer,
 }) => {
-    const [primaryProps, setPrimaryProps] = useState({});
+    const [primaryProps, setPrimaryProps] = useState({layers: []});
     const [overlayProps, setOverlayProps] = useState({});
+    const [layerStack, setLayerStack] = useState([]);
     const [librariesLoaded, setLibrariesLoaded] = useState(false);
     const [configurationLoaded, setConfigurationLoaded] = useState(false);
     const jsonConverter = useConverter();
@@ -120,18 +121,32 @@ const DeckglMap = ({
     }, []);
 
     useEffect(() => {
+        const _spec = JSON.parse(spec);
+        const _layer_ids = _spec.layers.map((l) => l.id);
+        const _new_layer_ids = merge_layers
+            ? layerStack.concat(
+                  _layer_ids.filter((l) => !layerStack.includes(l))
+              )
+            : _layer_ids;
+        setLayerStack(_new_layer_ids);
         const newPrimaryProps = jsonConverter.convert(spec);
-        console.log(newPrimaryProps);
-        let newLayers = newPrimaryProps.layers.filter((nl) => !!nl); //Layer can be null if supporting library not yet loaded
-        if (primaryProps.layers && primaryProps.layers.length && merge_layers) {
-            newLayers = primaryProps.layers
-                .map((l) => newLayers.find((nl) => nl.id === l.id) || l)
-                .concat(
-                    newLayers.filter(
-                        (nl) => !primaryProps.layers.find((l) => l.id === nl.id)
-                    )
-                );
-        }
+        let newLayers = merge_layers
+            ? _new_layer_ids.map(
+                  (lid) =>
+                      newPrimaryProps.layers.find((l) => !!l && l.id == lid) ||
+                      primaryProps.layers.find((l) => !!l && l.id == lid) ||
+                      null //Insert new layers in correct order
+              )
+            : newPrimaryProps.layers;
+        // if (primaryProps.layers && primaryProps.layers.length && merge_layers) {
+        //     newLayers = primaryProps.layers
+        //         .map((l) => newLayers.find((nl) => nl.id === l.id) || l)
+        //         .concat(
+        //             newLayers.filter(
+        //                 (nl) => !primaryProps.layers.find((l) => l.id === nl.id)
+        //             )
+        //         );
+        // }
         if (newPrimaryProps.initialViewState) {
             if (
                 !vState ||
@@ -141,6 +156,7 @@ const DeckglMap = ({
                 setVState(newPrimaryProps.initialViewState);
             }
         }
+        console.log(newLayers);
         setPrimaryProps({
             ...primaryProps,
             ...newPrimaryProps,
