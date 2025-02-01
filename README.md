@@ -2,7 +2,7 @@
 
 dash-deckgl is a Dash component library for [deck.gl](deck.gl).
 
-The main deifference between this component and the [dash-deck](https://github.com/plotly/dash-deck) is the ability to inject custom deck.gl layers within the Dash app code without rebuilding the component.
+The main difference between this component and the [dash-deck](https://github.com/plotly/dash-deck) is the ability to inject custom deck.gl layers within the Dash app code without rebuilding the component.
 
 Get started with:
 

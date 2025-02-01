@@ -1,2 +1,4 @@
 # dash is required to call `build:py`
 dash[dev]>=2.0.0
+pydeck>=0.9.1
+pydeck-grid>=0.9.1

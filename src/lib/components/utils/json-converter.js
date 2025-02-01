@@ -1,7 +1,7 @@
 import React, {useContext, createContext, useEffect, useState} from 'react';
 
 import {COORDINATE_SYSTEM, log, WebMercatorViewport} from '@deck.gl/core';
-import GLConstants from '@luma.gl/constants';
+import {GL} from '@luma.gl/constants';
 import {JSONConverter} from '@deck.gl/json';
 import {loadScript} from './script-utils';
 import * as deckExports from '../../bundles';
@@ -26,7 +26,7 @@ const jsonConverterConfiguration = {
     // Will be resolved as `<enum-name>.<enum-value>`
     enumerations: {
         COORDINATE_SYSTEM,
-        GL: GLConstants,
+        GL,
     },
 };
 

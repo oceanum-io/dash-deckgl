@@ -288,3 +288,5 @@ test.nc
 *.js.map
 deps/*
 inst/*
+
+pypi.conf

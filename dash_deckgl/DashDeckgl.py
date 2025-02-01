@@ -57,7 +57,9 @@ Keyword arguments:
     Add preserveDrawingBuffer to the WebGL context.
 
 - spec (string; required):
-    JSON spec of the primary deck.gl instance.
+    JSON spec of the primary deck.gl instance. Omit initial_view_state
+    from the spec to re-render the deck.gl map with new layers or
+    properties but without resetting the view.
 
 - tooltips (list; optional):
     An array of tooltip objects that follows he pydeck tooltip

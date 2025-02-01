@@ -31,7 +31,8 @@ Default 'none'
 - `overlay` (String; optional): JSON spec of the overlay deck.gl instance
 (optional)
 - `preserve_drawing_buffer` (Bool; optional): Add preserveDrawingBuffer to the WebGL context
-- `spec` (String; required): JSON spec of the primary deck.gl instance
+- `spec` (String; required): JSON spec of the primary deck.gl instance.
+Omit initial_view_state from the spec to re-render the deck.gl map with new layers or properties but without resetting the view.
 - `tooltips` (Array; optional): An array of tooltip objects that follows he pydeck tooltip specifcation.
 An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.
 - `viewstate` (Dict; optional): Current viewstate of the map.

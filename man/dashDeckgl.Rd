@@ -54,7 +54,8 @@ Default 'none'}
 
 \item{preserve_drawing_buffer}{Logical. Add preserveDrawingBuffer to the WebGL context}
 
-\item{spec}{Character. JSON spec of the primary deck.gl instance}
+\item{spec}{Character. JSON spec of the primary deck.gl instance.
+Omit initial_view_state from the spec to re-render the deck.gl map with new layers or properties but without resetting the view.}
 
 \item{tooltips}{Unnamed list. An array of tooltip objects that follows he pydeck tooltip specifcation.
 An additonal 'layer' property can be added to the tooltip objects to restrict their action to that layer ID.}

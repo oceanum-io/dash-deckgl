@@ -57,7 +57,7 @@ coverage: ## check code coverage quickly with the default Python
 	$(BROWSER) htmlcov/index.html
 
 release: dist ## package and upload a release
-	twine upload dist/*
+	twine upload --config-file pypi.conf dist/*
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist
