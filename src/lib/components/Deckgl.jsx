@@ -1,7 +1,7 @@
 import {BASEMAP} from '@deck.gl/carto';
 import {DeckGL} from '@deck.gl/react';
 import React, {useCallback, useEffect, useState, useRef} from 'react';
-import {Map} from 'react-map-gl';
+import {Map} from 'react-map-gl/mapbox';
 
 import {ConverterProvider, useConverter} from './utils/json-converter';
 import {loadMapboxCSS} from './utils/mapbox-utils';

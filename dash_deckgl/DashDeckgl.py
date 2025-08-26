@@ -1,6 +1,21 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+import typing  # noqa: F401
+from typing_extensions import TypedDict, NotRequired, Literal # noqa: F401
 from dash.development.base_component import Component, _explicitize_args
+
+ComponentType = typing.Union[
+    str,
+    int,
+    float,
+    Component,
+    None,
+    typing.Sequence[typing.Union[str, int, float, Component, None]],
+]
+
+NumberType = typing.Union[
+    typing.SupportsFloat, typing.SupportsInt, typing.SupportsComplex
+]
 
 
 class DashDeckgl(Component):
@@ -76,8 +91,29 @@ Keyword arguments:
     _base_nodes = ['children']
     _namespace = 'dash_deckgl'
     _type = 'DashDeckgl'
-    @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, spec=Component.REQUIRED, tooltips=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, custom_libraries=Component.UNDEFINED, configuration=Component.UNDEFINED, description=Component.UNDEFINED, events=Component.UNDEFINED, overlay=Component.UNDEFINED, landmask=Component.UNDEFINED, mapbox_key=Component.UNDEFINED, lastevent=Component.UNDEFINED, viewstate=Component.UNDEFINED, merge_layers=Component.UNDEFINED, cursor_position=Component.UNDEFINED, preserve_drawing_buffer=Component.UNDEFINED, **kwargs):
+
+
+    def __init__(
+        self,
+        id: typing.Optional[typing.Union[str, dict]] = None,
+        spec: typing.Optional[str] = None,
+        tooltips: typing.Optional[typing.Sequence] = None,
+        width: typing.Optional[typing.Union[NumberType, str]] = None,
+        height: typing.Optional[typing.Union[NumberType, str]] = None,
+        custom_libraries: typing.Optional[typing.Sequence] = None,
+        configuration: typing.Optional[dict] = None,
+        description: typing.Optional[dict] = None,
+        events: typing.Optional[typing.Sequence] = None,
+        overlay: typing.Optional[str] = None,
+        landmask: typing.Optional[dict] = None,
+        mapbox_key: typing.Optional[str] = None,
+        lastevent: typing.Optional[dict] = None,
+        viewstate: typing.Optional[dict] = None,
+        merge_layers: typing.Optional[bool] = None,
+        cursor_position: typing.Optional[str] = None,
+        preserve_drawing_buffer: typing.Optional[bool] = None,
+        **kwargs
+    ):
         self._prop_names = ['id', 'configuration', 'cursor_position', 'custom_libraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'merge_layers', 'overlay', 'preserve_drawing_buffer', 'spec', 'tooltips', 'viewstate', 'width']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'configuration', 'cursor_position', 'custom_libraries', 'description', 'events', 'height', 'landmask', 'lastevent', 'mapbox_key', 'merge_layers', 'overlay', 'preserve_drawing_buffer', 'spec', 'tooltips', 'viewstate', 'width']
@@ -93,3 +129,5 @@ Keyword arguments:
                     'Required argument `' + k + '` was not specified.')
 
         super(DashDeckgl, self).__init__(**args)
+
+setattr(DashDeckgl, "__init__", _explicitize_args(DashDeckgl.__init__))
